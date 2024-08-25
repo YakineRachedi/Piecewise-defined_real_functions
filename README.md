@@ -45,3 +45,5 @@ F(x) =
 \end{cases}
 $$
 This will allow us to perform an initial test.
+
+The function `PiecewiseFn<Segment, Affine_Fn<double>, double> make_tent_function(double a, double b, double h)` allows us to create an object from two pieces and a default value.
