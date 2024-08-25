@@ -25,3 +25,7 @@ template<class Domain,class Value>
 ```
 
 This function determines whether the value $v \in E$ belongs to a given subset $A \subset E$.
+
+### Methods :
+
+The `add_pieces` method adds a new pair $(A_i, f_i)$. We still assume that the sets $A_i$ are disjoint.
