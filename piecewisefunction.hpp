@@ -8,6 +8,7 @@
 
 template <typename Domain, typename Function> class PiecewiseFn;
 template <class Domain, class Value> bool test_if_contains(const Domain & A, const Value & v);
+template <class Value> class Affine_fn;
 
 template <class Domain, class Value>
     bool test_if_contains(const Domain & D, const Value & v) {
@@ -30,6 +31,24 @@ template <class Domain, class Function>
             template <class Argument> double operator() (const Argument & x) const;
 
     };
+template <class Value> 
+    class Affine_fn{
+        private :
+            Value a;
+            Value b;
+        public :
+            Affine_fn(const Value & a0, const Value & b0) : a(a0), b(b0) {};
+            Value operator() (const Value & x) const {
+                return this->a * x + this->b;
+            };
+    };
+
+struct Segment{
+    double left;
+    double right;
+    Segment(double a=0.,double b=1.): left(a), right(b) {};
+    bool contains(double x) const { return (left<x) && (x<right); } 
+};
 
 /*================================================Implementation of the methods==========================================================*/
 

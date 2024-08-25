@@ -29,3 +29,19 @@ This function determines whether the value $v \in E$ belongs to a given subset $
 ### Methods :
 
 The `add_pieces` method adds a new pair $(A_i, f_i)$. We still assume that the sets $A_i$ are disjoint.
+
+### First example :
+
+The class `Affine_fn` allows encoding functions of the type f(x)=ax+b in an arbitrary field (real, complex, integers).
+
+We need to define a function `tente` with parameters $(a, b, h)$ using the `Segment` structure and the `Affine_Fn` class such that:
+$$
+F(x) = 
+\begin{cases} 
+0 & \text{if } x < a \\
+\frac{2h}{b + a}(x - a) & \text{if } a \leq x \leq \frac{a + b}{2} \\
+\frac{2h}{b + a}(b - x) & \text{if } \frac{a + b}{2} \leq x \leq b \\
+0 & \text{if } x > b
+\end{cases}
+$$
+This will allow us to perform an initial test.
