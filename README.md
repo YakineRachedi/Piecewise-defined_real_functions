@@ -76,3 +76,18 @@ bool std::set<E>::contains(const E &) const
 ```
 
 I had to specialize the ```test_if_contains``` template and based it on the <algorithm> library using the ```std::find``` function (or possibly ```std::find_if```).
+
+### Third example : Linear Forms and Cuboids
+
+In this example now  we want to make a slightly more subtle construction. The space $E$ is now replaced by $\mathbb{R}^d$ and the sets $A_i$ are cuboids, i.e., Cartesian products of segments: 
+$$
+A_i = [u_1, v_1] \times \dots \times [u_d, v_d].
+$$
+
+The functions $f_i$ considered are linear forms on $\mathbb{R}^d$, i.e., functions 
+
+$$
+f(x) = \sum_{i=1}^{d} \alpha_i x_i.
+$$
+
+In this case,  we need a class template to code linear forms on an arbitrary space $K^d$ where $K$ is any field.
