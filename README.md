@@ -47,3 +47,32 @@ $$
 This will allow us to perform an initial test.
 
 The function `PiecewiseFn<Segment, Affine_Fn<double>, double> make_tent_function(double a, double b, double h)` allows us to create an object from two pieces and a default value.
+
+### Second example :
+
+We now want to code functions $f : \mathbb{Z} \to \mathbb{R}$ that are non-zero only on a finite set. To achieve this, we will consider sets $A_i$ on which the function $f$ is constant and equal to $c_i$, while $f$ is zero outside the $A_i$. 
+
+It is important to note that a constant function is an affine function with a slope $a$ equal to zero.
+
+The function 
+```cpp
+PiecewiseFn<std::set<int>, Affine_Fn<double>> make_int_fn_from_file(std::istream &is);
+``` 
+
+takes as an argument a file structured as follows:
+
+- On the first line, we have the number of pieces.
+- Then each piece is represented as:
+  - The first line contains the size of $A_i$ and the associated value $c_i$.
+  - Then, one line for each integer in $A_i$.
+
+This function returns the correct piecewise-defined function.
+
+_Note:_ 
+
+My compiler is a bit old, from 2016, and I didn't have time to update it. I searched online and found that std::set<E> containers did not have a contains method before C++20; after that, they introduced the method 
+```cpp
+bool std::set<E>::contains(const E &) const
+```
+
+I had to specialize the ```test_if_contains``` template and based it on the <algorithm> library using the ```std::find``` function (or possibly ```std::find_if```).

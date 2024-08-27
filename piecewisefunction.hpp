@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <vector>
+#include <set>
 #include <utility>
+#include <algorithm>
 
 
 template <typename Domain, typename Function> class PiecewiseFn;
@@ -14,6 +16,13 @@ template <class Domain, class Value>
     bool test_if_contains(const Domain & D, const Value & v) {
         return D.contains(v);
 }
+
+/* . . . Specializing template . . .*/
+template <class Value>
+    bool test_if_contains(const std::set<Value> & my_set, const Value & val) {
+        return std::find(my_set.begin(), my_set.end(), val) != my_set.end();
+}
+
 template <class Domain, class Function>
     class PiecewiseFn{
         private :
