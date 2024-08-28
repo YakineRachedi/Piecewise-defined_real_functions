@@ -20,7 +20,10 @@ template <class Field,int d>
             
             // Methods :
             Field operator () (const std::vector<Field> & v) const;  // this operator calculates the linear form f(x)
+            friend std::istream & operator >> <> (std::istream & is, LinearForm<Field,d> & f);
     };
+
+/*================================================Implementation of the methods==========================================================*/
 
 template <class Field,int d>
     Field LinearForm<Field,d>::operator () (const std::vector<Field> & input) const {
@@ -29,5 +32,13 @@ template <class Field,int d>
             result += coeff[i] * input[i];
         }
         return result;
+    }
+
+template <class Field, int d>
+    std::istream & operator >> (std::istream & is, LinearForm<Field,d> & f){
+        for(int i = 0; i < d; i++){
+            is >> f.coeff[i];
+        }
+        return is;
     }
 #endif

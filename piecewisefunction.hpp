@@ -59,6 +59,9 @@ struct Segment{
     bool contains(double x) const { return (left<x) && (x<right); } 
 };
 
+std::istream & operator >>(std::istream & is, Segment & Seg) {
+    return is >> Seg.left >> Seg.right;
+}
 /*================================================Implementation of the methods==========================================================*/
 
 template <class Domain, class Function> 

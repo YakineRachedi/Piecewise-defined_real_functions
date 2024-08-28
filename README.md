@@ -91,3 +91,15 @@ f(x) = \sum_{i=1}^{d} \alpha_i x_i.
 $$
 
 In this case,  we need a class template to code linear forms on an arbitrary space $K^d$ where $K$ is any field.
+
+A cuboid in $ \mathbb{R}^d $ is coded using the type `vector<Segment>` and a point in $ \mathbb{R}^d $ is represented by the type `vector<double>`. However, as is currently implemented, there is no adequate `contains` method to make `test_if_contains` work. In this case, a partial specialization of the template is needed for the following scenario: we will check if each coordinate belongs to the corresponding segment in the same direction.
+
+##### _Structure of `data3.txt`:_
+- The first line contains the number of pieces.
+- For each piece:
+  - The next three lines define the segments of a cuboid in dimension 3.
+  - The following three lines represent the coefficients of a linear form on $ \mathbb{R}^3 $.
+
+We will read this file and define a `PiecewiseFn<std::vector<Segment>, LinearForm<double, 3>>` with a default value of zero. Then, we will display some values to ensure that this program works correctly.
+
+Note: in file test3.cpp, we use different implementations of the operator>> (with struct Segment, class LinearForm, and the <fstream> library), and it is up to the compiler to choose one of them.
